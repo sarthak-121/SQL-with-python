@@ -1,32 +1,36 @@
 import requests
 import mysql.connector
 
-db = mysql.connector.connect(
-    host='localhost',
-    user="root",
-    password="root",
-    auth_plugin='mysql_native_password',
-    database="store_database"
-)
+try:
+    db = mysql.connector.connect(
+        host='localhost',
+        user="root",
+        password="root",
+        auth_plugin='mysql_native_password',
+        database="store_database"
+    )
+except:
+    print('could not connect to database')
+    exit()
 
 mycursor = db.cursor()
 
 mycursor.execute('''create table store_info (
-	Id int primary key,
-	Store_Name varchar(50), 
+    Id int primary key,
+    Store_Name varchar(50), 
     Phone varchar(20),
     street varchar(50),
-	suburb varchar(50), 
-	state varchar(10), 
+    suburb varchar(50), 
+    state varchar(10), 
     postcode int,
-	Latitude float(10),
-	Longitude float(10), 
-	Store_URL varchar(100)
+    Latitude float(10),
+    Longitude float(10), 
+    Store_URL varchar(100)
 )''')
 
 mycursor.execute('''create table store_opening_time_next_week (
-	Id int primary key,
-	Monday varchar(50),
+    Id int primary key,
+    Monday varchar(50),
     Tuesday varchar(50),
     Wednesday varchar(50),
     Thursday varchar(50),
@@ -36,8 +40,8 @@ mycursor.execute('''create table store_opening_time_next_week (
 )''')
 
 mycursor.execute('''create table store_opening_time_current_week (
-	Id int primary key,
-	Monday varchar(50),
+    Id int primary key,
+    Monday varchar(50),
     Tuesday varchar(50),
     Wednesday varchar(50),
     Thursday varchar(50),
@@ -58,8 +62,13 @@ def generate_hiffened_name(name):
     return f'https://www.bigw.com.au/store/{id}/{hiffened_name}'
 
 
-response = requests.get('https://api.bigw.com.au/api/stores/v0/list')
-data = response.json()
+try:
+    response = requests.get('https://api.bigw.com.au/api/stores/v0/list')
+    data = response.json()
+except:
+    print('could not fetch data')
+    exit()
+
 
 for key in data:
     id = data[key]['id']

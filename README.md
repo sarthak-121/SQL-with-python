@@ -20,7 +20,7 @@ Changes required in code are on line 5.
 
 Change user password and database name of the on your local system.
 
-Finally, you run the script file by typing command
+Finally, you run the script file in cmd by typing command
 
 ```
     python script.py

@@ -8,7 +8,7 @@ To run the script locally on you computer you must connect to the script file to
 
 Changes required in code are on line 5.
 
-'''python
+```python
     db = mysql.connector.connect(
         host='localhost',
         user="root",
@@ -16,15 +16,15 @@ Changes required in code are on line 5.
         auth_plugin='mysql_native_password',
         database="store_database"
     )
-'''
+```
 
 Change user password and database name of the on your local system.
 
 Finally, you run the script file by typing command
 
-'''
-    pyhton script.py
-'''
+```
+    python script.py
+```
 
 in the same directory in which the script file is present.
 

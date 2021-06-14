@@ -28,12 +28,7 @@ Finally, you run the script file in cmd by typing command
 
 in the same directory in which the script file is present.
 
-## Images of database after running script
+## Image of database after running script
 ## store_info table
-![](images/store_info.png)
+![](images/new_store_info.png)
 
-## onening time for current week
-![](images/current_week.png)
-
-## opening time for next week
-![](images/next_week.png)
